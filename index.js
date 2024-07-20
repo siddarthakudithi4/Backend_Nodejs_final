@@ -8,7 +8,7 @@ const path=require('path')
 const app=express()
 const mongoose=require("mongoose")
 const db=process.env.MONGOURI
-const PORT=4000
+const PORT=process.env.PORT || 4000
 
 mongoose.connect(db)
     .then(()=>{
