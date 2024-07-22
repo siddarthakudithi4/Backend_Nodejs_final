@@ -3,6 +3,7 @@ const express=require("express")
 const vendorRoutes=require('./routes/vendorRoutes')
 const firmRoutes=require('./routes/firmRoutes')
 const productRoutes=require('./routes/productRoutes')
+const cors=require('cors')
 const bodyParser=require('body-parser')
 const path=require('path')
 const app=express()
@@ -18,12 +19,13 @@ mongoose.connect(db)
         console.log(`there was an error ${error}`)
     })
 
-
+ app.use(cors())
 app.use(bodyParser.json())
 app.use('/vendor',vendorRoutes)
 app.use('/firm',firmRoutes)
 app.use('/product',productRoutes)
 app.use('/uploads',express.static('uploads'))
+
 
 app.listen(PORT,()=>{
     console.log(`server created and running at ${PORT}`)
