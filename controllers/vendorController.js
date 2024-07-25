@@ -63,7 +63,10 @@ const getAllVendors=async(req,res)=>{
 
 
 const getVendorById=async(req,res)=>{
-    const vendorId=req.params.apple
+    // const vendorId=req.params.apple
+    const vendorId = req.params.id;
+
+
     try {
         const vendor=await Vendor.findById(vendorId).populate('fi rm')
         if(!vendor){
